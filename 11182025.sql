@@ -1,4 +1,4 @@
-﻿﻿--Student ID 67040249108
+﻿--Student ID 67040249108
 --Student Name กิติธัช ไชยสัจ
 
 -- *********แบบฝึกหัด Basic Query #2 ***************
@@ -219,8 +219,7 @@ group by p.ProductID, p.ProductName
 
 --แบบ Join
 select p.ProductID, p.ProductName,sum(od.UnitPrice * od.Quantity) as SumPrice
-from Products as p
-inner join Suppliers as s on p.SupplierID = s.SupplierID
+from Products as p inner join Suppliers as s on p.SupplierID = s.SupplierID
 inner join [Order Details] as od on p.ProductID = od.ProductID
 inner join Orders as o on od.OrderID = o.OrderID
 where s.Country = 'Japan'
@@ -244,8 +243,7 @@ order by SumPrice desc;
 
 --แบบ Join
 select c.CustomerID, c.CompanyName,sum(od.UnitPrice * od.Quantity) AS SumPrice
-from Customers as c
-inner join Orders o on c.CustomerID = o.CustomerID
+from Customers as c inner join Orders o on c.CustomerID = o.CustomerID
 inner join [Order Details] as od on o.OrderID = od.OrderID
 inner join Products as p on od.ProductID = p.ProductID
 inner join Categories as ca on p.CategoryID = ca.CategoryID
@@ -270,8 +268,7 @@ group by s.ShipperID, s.CompanyName;
 
 --แบบ Join
 select s.ShipperID, s.CompanyName,Count(distinct o.OrderID) as NumOrders
-from Shippers as s
-inner join Orders as o on s.ShipperID = o.ShipVia
+from Shippers as s inner join Orders as o on s.ShipperID = o.ShipVia
 inner join [Order Details] as od on o.OrderID = od.OrderID
 inner join Products as p on od.ProductID = p.ProductID
 inner join Categories as c on p.CategoryID = c.CategoryID
@@ -300,8 +297,7 @@ group by c.CategoryID, c.CategoryName;
 
 --แบบ Join
 select c.CategoryID, c.CategoryName,sum(od.UnitPrice * od.Quantity) as SumPrice
-from Categories as c
-inner join Products as p on c.CategoryID = p.CategoryID
+from Categories as c inner join Products as p on c.CategoryID = p.CategoryID
 inner join [Order Details] as od on p.ProductID = od.ProductID
 inner join Orders as o on od.OrderID = o.OrderID
 inner join Employees as e on o.EmployeeID = e.EmployeeID
@@ -331,8 +327,7 @@ group by p.ProductID, p.ProductName;
 
 --แบบ Join
 select p.ProductID, p.ProductName,sum(od.UnitPrice * od.Quantity) as SumPrice
-from Products as p
-inner join Suppliers as s on p.SupplierID = s.SupplierID
+from Products as p inner join Suppliers as s on p.SupplierID = s.SupplierID
 inner join [Order Details] as od on p.ProductID = od.ProductID
 inner join Orders as o on od.OrderID = o.OrderID
 inner join Customers as c on o.CustomerID = c.CustomerID
